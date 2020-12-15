@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io' as io;
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:file/file.dart';
 import 'package:file/local.dart';
 import 'package:flutter/services.dart';
@@ -35,9 +36,14 @@ class _RecordBookState extends State<RecordBook> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     final ScreenParameter screenParameter =
         ModalRoute.of(context).settings.arguments;
     book = screenParameter.book;
+    List<Widget> pages = book.pages.map((e) => Image.network(e)).toList();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -50,11 +56,12 @@ class _RecordBookState extends State<RecordBook> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
+                  Text('옛날옛적에 헨젤과 그레텔이 살고 있었답니다.'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: FlatButton(
                           onPressed: () {
                             switch (_currentStatus) {
@@ -105,16 +112,14 @@ class _RecordBookState extends State<RecordBook> {
                       ),
                     ],
                   ),
-                  Text("Status : $_currentStatus"),
-                  Text('Avg Power: ${_current?.metering?.averagePower}'),
-                  Text('Peak Power: ${_current?.metering?.peakPower}'),
-                  Text("File path of the record: ${_current?.path}"),
-                  Text("Format: ${_current?.audioFormat}"),
-                  Text(
-                      "isMeteringEnabled: ${_current?.metering?.isMeteringEnabled}"),
-                  Text("Extension : ${_current?.extension}"),
-                  Text(
-                      "Audio recording duration : ${_current?.duration.toString()}")
+                  // Text("Status : $_currentStatus"),
+                  // Text("File path of the record: ${_current?.path}"),
+                  // Text("Format: ${_current?.audioFormat}"),
+                  // Text(
+                  //     "isMeteringEnabled: ${_current?.metering?.isMeteringEnabled}"),
+                  // Text("Extension : ${_current?.extension}"),
+                  // Text(
+                  //     "Audio recording duration : ${_current?.duration.toString()}")
                 ]),
           ),
         ),

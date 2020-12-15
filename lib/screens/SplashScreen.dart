@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -41,6 +42,10 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     return SafeArea(
       child: Scaffold(
         body: Container(
