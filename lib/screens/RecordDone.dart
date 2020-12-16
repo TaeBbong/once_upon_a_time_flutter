@@ -8,14 +8,49 @@ class RecordDone extends StatelessWidget {
         backgroundColor: Colors.amber[400],
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('녹음이 완료되었습니다!'),
-              Text('3000원을 적립하였습니다.'),
+              Column(
+                children: [
+                  Text(
+                    '녹음이 완료되었습니다!',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'THEvanillabean',
+                      fontSize: 30,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                  ),
+                  Text(
+                    '2000원을 적립하였습니다.',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'THEvanillabean',
+                      fontSize: 25,
+                    ),
+                  ),
+                ],
+              ),
               FlatButton(
-                onPressed: null,
-                child: Text('홈으로'),
+                height: MediaQuery.of(context).size.height * 0.13,
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/record');
+                },
+                child: Text(
+                  '    홈으로 돌아가기    ',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'THEvanillabean',
+                    fontSize: 30,
+                  ),
+                ),
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
               )
             ],
           ),

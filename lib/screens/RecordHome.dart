@@ -18,6 +18,17 @@ class _RecordHomeState extends State<RecordHome> {
   final List<Book> books = [
     Book(
       index: 0,
+      title: '옛날 옛적에',
+      image: 'images/logo.png',
+      pages: [
+        '옛날옛적에 김할머니가 살고계셨어요\n\n김할머니는 매일매일 아이고 허리야 아이고 다리야!하시며 학생들에게 급식을 나누어주었습니다.',
+        '하지만 날이갈수록 다리는 더 아파왔고,\n\n설상가상으로 할머니가 일하시는 학교에 전염병이 돌아서 학교가 문을 닫게되었어요.',
+        '갑자기 일자리를 잃으신 김할머니는 슬프고 두려웠습니다.\n\n“다른 할머니들은 괜찮을까?”\n\n궁금해진 김할머니는 친구들을 찾아 경로당으로 가보았습니다.',
+        '할머니의 친구들은 경로당에 둥글게 모여 무언가를 하고있었어요.\n\n“다들 뭐하고있어?”\n\n김할머니가 묻자 친구들이 대답했습니다\n\n“옛날옛적에!”'
+      ],
+    ),
+    Book(
+      index: 1,
       title: '누가 내 머리에 똥 쌌어?',
       image:
           'https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/3xdL/image/McUSP7GLtw3U4Ku0pfpfMjU9nfQ.jpg',
@@ -57,15 +68,6 @@ class _RecordHomeState extends State<RecordHome> {
       index: 4,
       title: '숲속 피아노',
       image: 'https://img.hankyung.com/photo/201704/BD.13793381.1.jpg',
-      pages: [
-        '옛날 옛적에 흥부와 놀부가 있었습니다.',
-        '둘은 사이 좋게 평생 행복하게 살았답니다!',
-      ],
-    ),
-    Book(
-      index: 5,
-      title: '숙제 해주는 로봇',
-      image: 'https://image.yes24.com/Goods/35763188/L',
       pages: [
         '옛날 옛적에 흥부와 놀부가 있었습니다.',
         '둘은 사이 좋게 평생 행복하게 살았답니다!',
@@ -111,6 +113,7 @@ class _RecordHomeState extends State<RecordHome> {
                 )
               : AppBar(
                   backgroundColor: Colors.amber[400],
+                  leading: Container(),
                   title: Text(
                     '$userName 님 안녕하세요!',
                     style: TextStyle(
@@ -181,11 +184,21 @@ class _RecordHomeState extends State<RecordHome> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Center(
-                                  child: Image.network(
-                                    books[index].image,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.5,
-                                  ),
+                                  child: index == 0
+                                      ? Image.asset(
+                                          books[index].image,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.5,
+                                        )
+                                      : Image.network(
+                                          books[index].image,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.5,
+                                        ),
                                 ),
                                 Center(
                                   child: Text(

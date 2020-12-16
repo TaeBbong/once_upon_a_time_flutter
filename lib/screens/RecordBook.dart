@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io' as io;
+import 'package:http/http.dart' as http;
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:file/file.dart';
@@ -86,28 +87,34 @@ class _RecordBookState extends State<RecordBook> {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Center(
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    pages[currentPage],
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 25,
-                      fontFamily: 'THEvanillabean',
-                      fontWeight: FontWeight.w100,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        pages[currentPage],
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontFamily: 'THEvanillabean',
+                          fontWeight: FontWeight.w100,
+                        ),
+                      ),
                     ),
                   ),
-
-                  // Text("Status : $_currentStatus"),
-                  // Text("File path of the record: ${_current?.path}"),
-                  // Text("Format: ${_current?.audioFormat}"),
-                  // Text(
-                  //     "isMeteringEnabled: ${_current?.metering?.isMeteringEnabled}"),
-                  // Text("Extension : ${_current?.extension}"),
-                  // Text(
-                  //     "Audio recording duration : ${_current?.duration.toString()}")
-                ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                  ),
+                  Center(
+                    child: Text(
+                      (currentPage + 1).toString() +
+                          '/' +
+                          book.pages.length.toString(),
+                    ),
+                  )
+                ],
               ),
             ),
             Container(
@@ -287,6 +294,9 @@ class _RecordBookState extends State<RecordBook> {
   }
 
   _nextPage() async {
+    // String result = await uploadImage(
+    //     _current.path, 'https://ictcoc-server.herokuapp.com/records/');
+    // print(result);
     if (currentPage + 1 == book.pages.length) {
       Navigator.pushReplacementNamed(context, '/record/done');
     } else {
@@ -296,6 +306,14 @@ class _RecordBookState extends State<RecordBook> {
         arguments: ScreenParameter(book, currentPage + 1),
       );
     }
+  }
+
+  Future<String> uploadImage(filename, url) async {
+    var request = http.MultipartRequest('POST', Uri.parse(url));
+    request.files.add(await http.MultipartFile.fromPath('audio', filename));
+    var res = await request.send();
+    print(filename);
+    return res.reasonPhrase;
   }
 
   Widget _buildText(RecordingStatus status) {

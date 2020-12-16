@@ -52,15 +52,22 @@ class _SplashScreenState extends State<SplashScreen>
         body: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                '옛날 옛적에',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 25,
-                  fontFamily: 'THEvanillabean',
-                  fontWeight: FontWeight.w400,
+              Center(
+                  child: Image.asset(
+                'images/logo_trans.png',
+                height: MediaQuery.of(context).size.height * 0.6,
+              )),
+              Center(
+                child: Text(
+                  '옛날 옛적에',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 35,
+                    fontFamily: 'THEvanillabean',
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ],
