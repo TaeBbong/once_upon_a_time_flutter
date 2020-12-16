@@ -48,9 +48,22 @@ class _SplashScreenState extends State<SplashScreen>
     ]);
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.amber[400],
         body: Container(
-          child: Center(
-            child: Text('옛날 옛적에'),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '옛날 옛적에',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 25,
+                  fontFamily: 'THEvanillabean',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
           ),
         ),
       ),
