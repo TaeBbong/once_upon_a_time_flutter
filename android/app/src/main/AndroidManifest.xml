@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.once_upon_a_time_app">
    <application
-        android:label="once_upon_a_time_app"
+        android:label="옛날 옛적에"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
