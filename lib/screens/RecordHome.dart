@@ -53,6 +53,24 @@ class _RecordHomeState extends State<RecordHome> {
         '둘은 사이 좋게 평생 행복하게 살았답니다!',
       ],
     ),
+    Book(
+      index: 4,
+      title: '숲속 피아노',
+      image: 'https://img.hankyung.com/photo/201704/BD.13793381.1.jpg',
+      pages: [
+        '옛날 옛적에 흥부와 놀부가 있었습니다.',
+        '둘은 사이 좋게 평생 행복하게 살았답니다!',
+      ],
+    ),
+    Book(
+      index: 5,
+      title: '숙제 해주는 로봇',
+      image: 'https://image.yes24.com/Goods/35763188/L',
+      pages: [
+        '옛날 옛적에 흥부와 놀부가 있었습니다.',
+        '둘은 사이 좋게 평생 행복하게 살았답니다!',
+      ],
+    ),
   ];
 
   @override
@@ -146,7 +164,7 @@ class _RecordHomeState extends State<RecordHome> {
                   child: GridView.count(
                     crossAxisCount: 2,
                     childAspectRatio: 1.5,
-                    children: List.generate(4, (index) {
+                    children: List.generate(6, (index) {
                       return Container(
                         height: MediaQuery.of(context).size.height * 0.4,
                         child: InkWell(

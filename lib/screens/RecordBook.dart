@@ -51,14 +51,28 @@ class _RecordBookState extends State<RecordBook> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          title: Text(
-            book.title,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontFamily: 'THEvanillabean',
-              fontWeight: FontWeight.w400,
-            ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                book.title,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontFamily: 'THEvanillabean',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              // Text(
+              //   (currentPage + 1).toString(),
+              //   style: TextStyle(
+              //     color: Colors.black,
+              //     fontSize: 18,
+              //     fontFamily: 'THEvanillabean',
+              //     fontWeight: FontWeight.w400,
+              //   ),
+              // ),
+            ],
           ),
         ),
         body: Row(
@@ -103,6 +117,9 @@ class _RecordBookState extends State<RecordBook> {
                 children: <Widget>[
                   FlatButton(
                     height: MediaQuery.of(context).size.height * 0.13,
+                    // onPressed: _currentStatus == RecordingStatus.Stopped
+                    //     ? onPlayAudio
+                    //     : null,
                     onPressed: onPlayAudio,
                     child: Text(
                       "들어보기",
@@ -272,12 +289,13 @@ class _RecordBookState extends State<RecordBook> {
   _nextPage() async {
     if (currentPage + 1 == book.pages.length) {
       Navigator.pushReplacementNamed(context, '/record/done');
+    } else {
+      Navigator.pushReplacementNamed(
+        context,
+        '/record/book',
+        arguments: ScreenParameter(book, currentPage + 1),
+      );
     }
-    Navigator.popAndPushNamed(
-      context,
-      '/record/book',
-      arguments: ScreenParameter(book, currentPage + 1),
-    );
   }
 
   Widget _buildText(RecordingStatus status) {

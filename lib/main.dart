@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:once_upon_a_time_app/screens/ListenHome.dart';
 import 'package:once_upon_a_time_app/screens/RecordBook.dart';
+import 'package:once_upon_a_time_app/screens/RecordDone.dart';
 import 'package:once_upon_a_time_app/screens/RecordHome.dart';
 import 'package:once_upon_a_time_app/screens/SiginInScreen.dart';
 import 'package:once_upon_a_time_app/screens/SplashScreen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/listen': (context) => ListenHome(),
         '/record': (context) => RecordHome(),
         '/record/book': (context) => RecordBook(),
+        '/record/done': (context) => RecordDone(),
       },
     );
   }
