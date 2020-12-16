@@ -64,15 +64,6 @@ class _RecordBookState extends State<RecordBook> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              // Text(
-              //   (currentPage + 1).toString(),
-              //   style: TextStyle(
-              //     color: Colors.black,
-              //     fontSize: 18,
-              //     fontFamily: 'THEvanillabean',
-              //     fontWeight: FontWeight.w400,
-              //   ),
-              // ),
             ],
           ),
         ),
@@ -88,30 +79,45 @@ class _RecordBookState extends State<RecordBook> {
                 ),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        pages[currentPage],
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontFamily: 'THEvanillabean',
-                          fontWeight: FontWeight.w100,
+                  Expanded(
+                    flex: 1,
+                    child: Container(),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          pages[currentPage],
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontFamily: 'THEvanillabean',
+                            fontWeight: FontWeight.w100,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
-                  Center(
-                    child: Text(
-                      (currentPage + 1).toString() +
-                          '/' +
-                          book.pages.length.toString(),
+                  // Padding(
+                  //   padding: EdgeInsets.all(10),
+                  // ),
+                  Expanded(
+                    flex: 1,
+                    child: Center(
+                      child: Text(
+                        (currentPage + 1).toString() +
+                            '/' +
+                            book.pages.length.toString(),
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontFamily: 'THEvanillabean',
+                        ),
+                      ),
                     ),
                   )
                 ],
@@ -303,7 +309,7 @@ class _RecordBookState extends State<RecordBook> {
       Navigator.pushReplacementNamed(
         context,
         '/record/book',
-        arguments: ScreenParameter(book, currentPage + 1),
+        arguments: ScreenParameter(book, currentPage + 1, []),
       );
     }
   }

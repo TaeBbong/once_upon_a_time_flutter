@@ -74,7 +74,11 @@ class _RecordHomeState extends State<RecordHome> {
       ],
     ),
   ];
-
+  final List<String> help = [
+    '화면에 나오는 문장을 또박또박 읽어주세요.\n다 읽으셨으면 다음 버튼을 눌러\n다음 페이지로 넘어가주세요.',
+    '중간에 멈추고 싶으실 땐 정지버튼을\n눌러 잠시 멈추실 수 있습니다.',
+    '이후 다시 시작하고 싶으실 때는\n시작버튼을 눌러\n이어서 녹음해주세요.',
+  ];
   @override
   void initState() {
     super.initState();
@@ -174,8 +178,8 @@ class _RecordHomeState extends State<RecordHome> {
                           onTap: () {
                             Navigator.pushNamed(
                               context,
-                              '/record/book',
-                              arguments: ScreenParameter(books[index], 0),
+                              '/help',
+                              arguments: ScreenParameter(books[index], 0, help),
                             );
                           },
                           child: Container(
